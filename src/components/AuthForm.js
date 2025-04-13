@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Container, Row, Col, Form, Button, Card, Toast } from "react-bootstrap";
+import { Container, Row, Col, Form, Button, Card } from "react-bootstrap";
 import axios from "axios";
 
 const AuthForm = () => {
@@ -18,14 +18,8 @@ const AuthForm = () => {
     e.preventDefault();
     console.log("Form Submitted", formData);
     var data = await axios.post("http://127.0.0.1:5000/signup",formData)
-  
-    // if (data.data.status == "success"){
-    //   Toast(data.data.message)
-      
-    // }else{
-    //   Toast(data.data.message)
-
-    // }
+    console.log(data)
+ 
   };
 
   return (
