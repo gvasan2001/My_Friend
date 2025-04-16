@@ -13,7 +13,7 @@ import Loading from "./components/Loading";
 
 const App = () => {
   return (
-    <Router basename="/My_Friend">
+    <Router basename="/login">
       <AppNavbar />
       <Routes>
       <Route
