@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import AuthForm from "./components/AuthForm";
 import FriendForm from "./components/FriendForm";
 import AppNavbar from "./components/Navbar";
@@ -14,13 +14,41 @@ import Loading from "./components/Loading";
 const App = () => {
   return (
     <Router basename="/My_Friend">
-  <AppNavbar />
-  <Routes>
-    <Route path="/" element={<AuthForm />} />
-    <Route path="/friend-form" element={<FriendForm />} />
-    <Route path="/upload-details" element={<UploadDetailsForm />} />
-  </Routes>
-</Router>
+      <AppNavbar />
+      <Routes>
+        {/* Redirect root path to /login */}
+        <Route path="/" element={<Navigate to="/login" replace />} />
+        
+        {/* Login route */}
+        <Route
+          path="/login"
+          element={
+            <AuthPage>
+              <LoginForm />
+            </AuthPage>
+          }
+        />
+        
+        {/* Register route */}
+        <Route
+          path="/register"
+          element={
+            <AuthPage>
+              <RegisterForm />
+            </AuthPage>
+          }
+        />
+        
+        {/* Protected routes */}
+        <Route path="/welcome" element={<Welcome />} />
+        <Route path="/friend-form" element={<FriendForm />} />
+        <Route path="/upload-details" element={<UploadDetailsForm />} />
+        <Route path="/loading" element={<Loading />} />
+        
+        {/* Catch-all route redirects to login */}
+        <Route path="*" element={<Navigate to="/login" replace />} />
+      </Routes>
+    </Router>
   );
 };
 

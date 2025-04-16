@@ -1,6 +1,6 @@
 import React from "react";
 import { Navbar, Container, Nav } from "react-bootstrap";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, Link } from "react-router-dom";
 
 const AppNavbar = () => {
   const location = useLocation();
@@ -13,7 +13,11 @@ const AppNavbar = () => {
     }
   };
 
-  const isAuthPage = location.pathname === "/login" || location.pathname === "/register";
+  // Updated path checks for GitHub Pages deployment
+  const isAuthPage = location.pathname.endsWith("/login") || 
+  location.pathname.endsWith("/register") ||
+  location.pathname === "/My_Friend" ||
+  location.pathname === "/My_Friend/";
 
   return (
     <Navbar
@@ -24,7 +28,7 @@ const AppNavbar = () => {
       }}
     >
       <Container>
-        <Navbar.Brand href="#" className="text-white fw-bold">
+        <Navbar.Brand as={Link} to="/" className="text-white fw-bold">
           My Friend
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" className="bg-white" />
@@ -32,16 +36,16 @@ const AppNavbar = () => {
           <Nav className="ms-auto">
             {isAuthPage ? (
               <>
-                <Nav.Link href="/login" className="text-white fw-semibold">
+                <Nav.Link as={Link} to="/login" className="text-white fw-semibold">
                   Login
                 </Nav.Link>
-                <Nav.Link href="/register" className="text-white fw-semibold">
+                <Nav.Link as={Link} to="/register" className="text-white fw-semibold">
                   Register
                 </Nav.Link>
               </>
             ) : (
               <>
-                <Nav.Link href="/welcome" className="text-white fw-semibold">
+                <Nav.Link as={Link} to="/welcome" className="text-white fw-semibold">
                   Home
                 </Nav.Link>
                 <Nav.Link
