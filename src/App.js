@@ -29,7 +29,7 @@ const App = () => {
           }
         />
         
-        {/* Register route */}
+        {/* Registerrrrr route */}
         <Route
           path="/register"
           element={
