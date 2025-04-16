@@ -34,7 +34,7 @@ const RegisterForm = () => {
         toast.success(data.message || "Registration successful!");
       }
     } catch (error) {
-      // Handle network errors or other exceptions
+      // Handle network errors or other exceptionssssss
       toast.error("An error occurred. Please try again later.");
       console.error("Registration error:", error);
     } finally {
