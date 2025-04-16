@@ -13,32 +13,14 @@ import Loading from "./components/Loading";
 
 const App = () => {
   return (
-    <Router basename="/login">
-      <AppNavbar />
-      <Routes>
-      <Route
-          path="/login"
-          element={
-            <AuthPage>
-              <LoginForm />
-            </AuthPage>
-          }
-        />
-        <Route
-          path="/register"
-          element={
-            <AuthPage>
-              <RegisterForm />
-            </AuthPage>
-          }
-        />
-        <Route path="/friend-form" element={<FriendForm />} />
-        <Route path="/welcome" element={<Welcome />} />
-        <Route path="/upload-details" element={<UploadDetailsForm />} />
-        <Route path="/loading" element={<Loading />} />
-
-      </Routes>
-    </Router>
+    <Router basename="/My_Friend">
+  <AppNavbar />
+  <Routes>
+    <Route path="/" element={<AuthForm />} />
+    <Route path="/friend-form" element={<FriendForm />} />
+    <Route path="/upload-details" element={<UploadDetailsForm />} />
+  </Routes>
+</Router>
   );
 };
 
