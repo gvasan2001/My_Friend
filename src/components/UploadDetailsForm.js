@@ -33,7 +33,7 @@ const UploadDetailsForm = () => {
     }}
   >  <Container className="d-flex justify-content-center align-items-center vh-100">
   <Card className="p-4 shadow w-50">
-    <Card.Title  className="text-center fw-bold fs-4 text-primary">Upload Your Details</Card.Title>
+    <Card.Title  className="text-center fw-bold fs-4 text-primary">Welcome To My Friend</Card.Title>
     <Card.Body>
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3">
