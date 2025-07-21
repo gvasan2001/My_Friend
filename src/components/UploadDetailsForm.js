@@ -31,7 +31,7 @@ const UploadDetailsForm = () => {
     form.append("photo",formData.photo);
     form.append("signature",formData.signature);
     try{
-      const response = await fetch("http://localhost:5000/upload_image",{
+      const response = await fetch("https://gvasan.pythonanywhere.com/upload_image",{
         method:"POST",
       
         body: form,
