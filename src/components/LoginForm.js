@@ -17,7 +17,7 @@ const LoginForm = () => {
     setIsSubmitting(true);
     
     try {
-      const response = await fetch("https://gvasan.pythonanywhere.com/login", {
+      const response = await fetch("http://localhost:5000/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -36,7 +36,7 @@ const LoginForm = () => {
       } else {
         // Handle success response (status code 2xx)
         toast.success(data.message || "Login successful!");
-        setTimeout(() => navigate("/welcome"), 1500);
+        setTimeout(() => navigate("/upload-details"), 1500);
       }
     } catch (error) {
       // Handle network errors or other exceptions

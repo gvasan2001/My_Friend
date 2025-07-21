@@ -1,8 +1,14 @@
 import React, { useState } from "react";
 import { Container, Form, Button, Card } from "react-bootstrap";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+// import axios from "axios";
+
 
 const UploadDetailsForm = () => {
-  const [formData, setFormData] = useState({
+  // const [file , setfile] = useState(null);
+   const navigate = useNavigate(); 
+  let [formData, setFormData] = useState({
     aadharImg: null,
     panImg: null,
     photo: null,
@@ -16,10 +22,37 @@ const UploadDetailsForm = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Uploaded Files:", formData);
-    alert("Files uploaded successfully!");
+
+    const form = new FormData();
+    form.append("aadharImg",formData.aadharImg);
+    form.append("panImg",formData.panImg);
+    form.append("photo",formData.photo);
+    form.append("signature",formData.signature);
+    try{
+      const response = await fetch("http://localhost:5000/upload_image",{
+        method:"POST",
+      
+        body: form,
+
+      });
+
+      const data = await response.json();
+      console.log(data);
+
+      if(!response.ok) {
+        toast.error(data.message || "Upload failed .please try again.");
+      } else{
+        toast.success(data.message || "upload successfull");
+        setTimeout(() => {
+          navigate("/loading");
+        }, 1000);
+      }
+    }
+    catch (error) {
+      toast.error("An error occured . Please try again later.")
+    }
   };
 
   return (
